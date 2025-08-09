@@ -1,4 +1,4 @@
-# Teoria de Algoritmos - Curso Buchwald
+# Teoría de Algoritmos - Curso Buchwald
 Cursada el segundo cuatrimestre de 2025. [Pagina de la cátedra](https://algoritmos-rw.github.io/tda_bg/).
 
 ### Temario

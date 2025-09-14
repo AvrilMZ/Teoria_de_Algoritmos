@@ -18,3 +18,10 @@ def fibonacci(n):
 		return 1
 	return fibonacci(n - 2) + fibonacci(n - 1)
 
+'''
+Complejidad:
+	La ecuacion de recurrencia es:
+		T(n) = T(n - 1) + T(n - 2) + O(1)
+	Por lo que se tienen dos llamadas recursivas por invocacion en el peor de los casos, esto implica:
+		O(2**n)
+'''

@@ -22,16 +22,51 @@ Nota sobre RPL: en este ejercicio se pide cumplir la tarea "con un algoritmo Gre
 Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
 '''
 
+def ciudad_cubierta(patrulleros, km):
+	if len(patrulleros) == 0:
+		return False
+
+	ultima_patrulla = patrulleros[len(patrulleros) - 1]
+	_, p_km = ultima_patrulla
+	if p_km - km >= 0 and p_km - km <= 50:
+		return True
+	elif km - p_km >= 0 and km - p_km <= 50:
+		return True
+	
+	return False
+
 def bifurcaciones_con_patrulla(ciudades):
-	ciudades_ordenadas = sorted(ciudades, key=lambda ciudad: ciudad[1])
-	policiales = []
-	ultimo_puesto = None
-	for ciudad, bifurcacion in ciudades_ordenadas:
-		if not ultimo_puesto or bifurcacion - ultimo_puesto > 50:
-			policiales.append((ciudad, bifurcacion))
-			ultimo_puesto = bifurcacion
-	return policiales
+	if len(ciudades) == 1:
+		return [ciudades[0]]
+
+	ciudades_ord = sorted(ciudades, key=lambda x: x[1])
+	patrulleros = []
+
+	for i in range(0, len(ciudades_ord)):
+		c, km = ciudades_ord[i]
+		if not ciudad_cubierta(patrulleros, km):
+			if i == len(ciudades_ord) - 1:
+				patrulleros.append((c, km))
+				continue
+
+			c_p, km_p = ciudades_ord[i + 1]
+			if km_p - km > 50:
+				patrulleros.append((c, km))
+			else:
+				patrulleros.append((c_p, km_p))		
+
+	return patrulleros
 
 '''
+Complejidad:
+	- Ordenar las ciudades: O(n*log(n))
+	- Recorrer las ciudades: O(n)
+	- Verficar si la ciudad esta cubierta: O(1)
+Por lo que la complejidad resulta en:
+	O(n*log(n))
 
+La solución es óptima porque inductivamente:
+	1. Se ordenan las ciudades ascendentemente por kilómetro.
+	2. Cada vez que se encuentra una ciudad no cubierta, se coloca un patrullero en la última bifurcación posible dentro de los 50 km siguientes. Esto maximiza la cobertura hacia adelante y minimiza la cantidad total de patrulleros.
+	3. En cada paso la decisión local es la mejor y no limita la optimalidad global. Ninguna colocación más a la izquierda podría cubrir más ciudades, y moverlo más adelante dejaría ciudades sin cubrir.
 '''

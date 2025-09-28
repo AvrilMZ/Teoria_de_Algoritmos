@@ -17,30 +17,30 @@ Métodos del grafo:
 	str
 '''
 
-def son_iso(grafo, parcial, nuevo):
-	for v in parcial:
-		if grafo.estan_unidos(v, nuevo):
-			return True
-	return False
+def son_iso(g1, g2, v1, parcial, nuevo_v2):
+	for i in range(len(parcial)):
+		if g1.estan_unidos(v1[i], v1[len(parcial)]) != g2.estan_unidos(parcial[i], nuevo_v2): # v1[len(parcial)] deberia ser igual a nuevo_v2 y obviamente los incluidos previamente en parcial deberian coincidir con los de v1 (parcial[i] deberia ser igual a v1[i]). Se verifica la union con todos los vertices ya que si el nuevo tendria otra arista a algunos de los vertices ya puestos deberia estar para ambos.
+			return False
+	return True
 
-def detectar_iso(g1, v1, v2, parcial, indice):
-	if indice == min(len(v1), len(v2)) and len(parcial) != 0:
+def detectar_iso(g1, g2, v1, v2, parcial):
+	if len(parcial) == len(v1):
 		return True
 	
-	vertice = v2[indice]
-	if son_iso(g1, parcial, vertice): # tengo que meter un for antes
-		parcial.append(vertice)
-		if detectar_iso(g1, v1, v2, parcial, indice + 1):
-			return True
-		parcial.pop()
+	for v in v2:
+		if v not in parcial and son_iso(g1, g2, v1, parcial, v):
+			parcial.append(v)
+			if detectar_iso(g1, g2, v1, v2, parcial):
+				return True
+			parcial.pop()
 	
-	if detectar_iso(g1, v1, v2, parcial, indice + 1):
-		return True
-	
+	# No se realiza la llamada recursiva donde se saltea el vertice ya que si se lo saltea significa que difiere del otro grafo, por lo que no seria un isomorfismo.
+
 	return False
 
 def hay_isomorfismo(g1, g2):
+	if len(g1) != len(g2):
+		return False
 	ver1 = g1.obtener_vertices()
 	ver2 = g2.obtener_vertices()
-
-	return detectar_iso(g1, ver1, ver2, [], 0)
+	return detectar_iso(g1, g2, ver1, ver2, [])

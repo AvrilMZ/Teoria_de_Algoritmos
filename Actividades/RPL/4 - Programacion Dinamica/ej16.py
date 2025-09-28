@@ -4,5 +4,10 @@ Osvaldo es un empleado de una inescrupulosa empresa inmobiliaria, y está buscan
 Implementar un algoritmo de programación dinámica que permita resolver el problema de Osvaldo. Indicar y justificar la complejidad del algoritmo implementado.
 '''
 
+'''
+En este problema me tengo que forzar a comprar en todos los dias hasta n - 1 y luego verificar en cual tengo la ganancia maxima:
+	OPT[i] = max(0, OPT[i - 1] + P(i) - P(i - 1))
+'''
+
 def compra_venta(p):
 	return 0, len(p) - 1

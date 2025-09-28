@@ -18,7 +18,7 @@ Para este problema tenemos dos opciones por cada iteracion:
 	i. Cortar la soga
 	ii. No cortar la soga
 Dadas estas opciones podemos plantear la ecuacion de recurrencia como:
-	OPT[i] = max(OPT[i - 1] * OPT[i - 1], OPT[i - 1])
+	OPT[n] = max(max(i, OPT[i]) * max(i - 1, OPT[i - 1])), i -> [1, n - 1]
 '''
 
 def problema_soga(n):

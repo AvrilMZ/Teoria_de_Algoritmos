@@ -17,34 +17,30 @@ Métodos del grafo:
 	str
 '''
 
-def detectar_iso(g1, g2, v1, v2, vertice1, vertice2, visitados, indice):
-	if indice == len(v1):
+def son_iso(grafo, parcial, nuevo):
+	for v in parcial:
+		if grafo.estan_unidos(v, nuevo):
+			return True
+	return False
+
+def detectar_iso(g1, v1, v2, parcial, indice):
+	if indice == min(len(v1), len(v2)) and len(parcial) != 0:
 		return True
 	
-	for vecino in g2.adyacentes(vertice2):
-		if vecino not in visitados:
-			for new_ver in g1.adyacentes(vertice1):
-				if new_ver not in visitados and g1.estan_unidos(vertice1, new_ver) == g2.estan_unidos(vertice2, vecino):
-					visitados.append(vecino)
-					if detectar_iso(g1, g2, v1, v2, new_ver, vecino, visitados, indice + 1):
-						return True
-					visitados.pop()
-
+	vertice = v2[indice]
+	if son_iso(g1, parcial, vertice): # tengo que meter un for antes
+		parcial.append(vertice)
+		if detectar_iso(g1, v1, v2, parcial, indice + 1):
+			return True
+		parcial.pop()
+	
+	if detectar_iso(g1, v1, v2, parcial, indice + 1):
+		return True
+	
 	return False
 
 def hay_isomorfismo(g1, g2):
 	ver1 = g1.obtener_vertices()
 	ver2 = g2.obtener_vertices()
 
-	if len(ver1) != len(ver2):
-		return False
-	elif len(ver1) == 0 and len(ver2) == 0:
-		return True
-	
-	for v1 in ver1:
-		for v2 in ver2:
-			if detectar_iso(g1, g2, ver1, ver2, v1, v2, [], 0):
-				return True
-	return False
-
-# CORREGIR
+	return detectar_iso(g1, ver1, ver2, [], 0)

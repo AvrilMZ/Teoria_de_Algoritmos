@@ -1,0 +1,74 @@
+# PRIMER RECUPERATORIO PARCIAL - 1C2024
+
+## Ejercicio 1
+```py
+def buscar_caminos(grafo, v, w, caminos):
+
+
+def caminos_disjuntos(grafo, v, w):
+	
+```
+
+## Ejercicio 2
+```py
+# heladeras = [(c_1,c_2)(c_3)] -> donde cada c_i tiene su valor de perdida
+def mover_c(heladeras):
+	if len(heladeras) == 0 or len(heladeras) == 1:
+		return 0
+
+	heladeras_ord = sorted(heladeras, key=lambda x: len(x))
+
+	perdida = 0
+	for heladera in len(0, len(heladeras) - 1):
+		perdida += sum(heladera)
+
+	return perdida
+```
+Complejidad:
+	- Ordenar el arreglo por longitud de componentes en cada heladera: O(n*log(n)).
+	- Recorrer cada heladera sumando al acumulado la perdida correspondiente de cada heladera menos la ultima: O(n - 1)
+Por lo que la complejidad final resulta en:
+	O(n*log(n)) + O(n - 1) = O(n*log(n))
+
+Este algoritmo es greedy dado a que por cada iteracion se busca mover la menor cantidad de elementos (optimo local) para minimizar la cantidad de perdia, es asi que la ultima heladera (osea la que preservamos) es la que mas elementos tiene. No es un algoritmo optimo ya que no se tiene en cuenta la perdida de cada elemento, puede pasar que haya una heladera con un elemento de perdida 100 y luego otra mucho mas adelante con 10 elementos y cada uno con perdida de 1, por lo que mover ese elemento mas grande afectaria negativamente la suma acumulada.
+
+## Ejercicio 3
+(SEGUNDO PARCIAL)
+
+## Ejercicio 4
+Dado a que se pueden repetir elementos la ecuacion de recurrencia es igual a la de la mochila solo que con una leve modificacion:
+	OPT[n][w] = max(OPT[n][w - peso(elem[n])] + valor(elem[n]), OPT[n - 1][w])
+En este caso no haria falta cambiar de fila en caso de agregar el elemento porque podemos volver a usarlo.
+
+```py
+def crear_opt(elementos, W):
+	OPT = [[0] * (W + 1) for _ in range(len(elementos) + 1)]
+	for i in range(1, len(elementos) + 1):
+		valor, peso = elementos[i - 1]
+		for j in range(W + 1):
+			if peso <= j:
+				OPT[i][j] = max(OPT[i][j - peso] + valor, OPT[i - 1][j])
+			else:
+				OPT[i][j] = OPT[i - 1][j]
+	return OPT
+
+def mochila(elementos, W):
+	OPT = crear_opt(elementos, W)
+	res = []
+	w = W
+	for i in range(len(elementos), 0, -1):
+		if OPT[i][w] != OPT[i - 1][w]:
+			res.append(elementos[i])
+			w -= elementos[i - 1][1]
+	res.reverse()
+	return res
+```
+
+Complejidad:
+	- Crear matriz OPT: O(n * m), siendo n la cantidad de elementos y m el peso maximo
+	- Reconstruccion: O(n) + O(n) -> (recorrer los elementos) + (reverse)
+Por lo que la complejidad resulta en:
+	O(n * m) + O(n) + O(n) = O(n * m)
+
+## Ejercicio 5
+(SEGUNDO PARCIAL)

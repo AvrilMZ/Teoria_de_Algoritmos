@@ -27,9 +27,9 @@ def elemento_desordenado(arr):
 
 '''
 Por el teorema maestro:
-	T(n)=AT(n/B)+O(f(n))
+	T(n) = AT(n/B) + O(f(n))
 Entonces:
-	T(n)=2T(n/2)+O(1) -> A>=1 y B>1
+	T(n) = 2T(n/2) + O(1) -> A >= 1 y B > 1
 	O(1) == n^(log_2(2))
 Por lo tanto la complejidad es:
 	O(n)

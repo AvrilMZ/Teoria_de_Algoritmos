@@ -1,7 +1,7 @@
 '''
-Se tiene una matriz donde en cada celda hay submarinos, o no, y se quiere poner faros para iluminarlos a todos. 
-Implementar un algoritmo que dé la cantidad mínima de faros que se necesitan para que todos los submarinos queden iluminados, 
-siendo que cada faro ilumina su celda y además todas las adyacentes (incluyendo las diagonales), y las directamente adyacentes a estas (es decir, un “radio de 2 celdas”).
+Se tiene una matriz donde en cada celda hay submarinos, o no, y se quiere poner faros para iluminarlos a todos.
+
+Implementar un algoritmo que dé la cantidad mínima de faros que se necesitan para que todos los submarinos queden iluminados, siendo que cada faro ilumina su celda y además todas las adyacentes (incluyendo las diagonales), y las directamente adyacentes a estas (es decir, un “radio de 2 celdas”).
 
 Nota: el ejercicio puede resolverse sin el uso de Grafos, pero en caso de querer utilizarlo, está disponible como se describe.
 
@@ -21,46 +21,71 @@ Métodos del grafo:
 	str
 '''
 
-def comparten_area(faro1, faro2, filas, columnas):
-	x1, y1 = faro1
-	x2, y2 = faro2
+def comparten_area(submarino, faro):
+	x1, y1 = submarino
+	x2, y2 = faro
+	return (x2 - 2 <= x1 <= x2 + 2) and (y2 - 2 <= y1 <= y2 + 2)
 
-	area1 = [(x, y) for x in range(max(0, x1 - 2), min(filas, x1 + 3))
-			for y in range(max(0, y1 - 2), min(columnas, y1 + 3))]
-	area2 = [(x, y) for x in range(max(0, x2 - 2), min(filas, x2 + 3))
-			for y in range(max(0, y2 - 2), min(columnas, y2 + 3))]
+def buscar_submarinos(matriz):
+	submarinos = set()
+	for i in range(len(matriz)):
+		for j in range(len(matriz[0])):
+			if matriz[i][j]:
+				submarinos.add((i, j))
+	return submarinos
 
-	return bool(set(area1) & set(area2))
+def buscar_cobertura(fil, col, submarinos):
+	cobertura = set()
+	for i in range(fil - 2, fil + 3):
+		for j in range(col - 2, col + 3):
+			if (i, j) in submarinos:
+				cobertura.add((i, j))
+	return cobertura
 
-def colocar_faros(matriz, res, cant_f, cant_c, pos):
-	if pos == cant_f * cant_c:
-		return res.copy()
-	
-	f = pos // cant_c
-	c = pos % cant_c
-	
+def colocar_faros(matriz, submarinos, parcial, indice, minima):
+	if len(submarinos) == 0:
+		return parcial.copy()
+	elif indice == len(matriz) * len(matriz[0]):
+		return None
+	elif minima and len(parcial) >= len(minima):
+		return minima
+
+	f = indice // len(matriz[0])
+	c = indice % len(matriz[0])
+
+	cobertura = buscar_cobertura(f, c, submarinos)
+
 	agregado = None
-	salteado = None
-	if matriz[f][c] == True and not any(comparten_area((f, c), faro, cant_f, cant_c) for faro in res):
-		res.append((f,c))
-		agregado = colocar_faros(matriz, res, cant_f, cant_c, pos + 1)
-		res.pop()
-	else:
-		salteado = colocar_faros(matriz, res, cant_f, cant_c, pos + 1)
-			
-	if agregado is None:
-		return salteado
-	if salteado is None:
+	if len(cobertura) != 0:
+		parcial.append((f, c))
+		submarinos.difference_update(cobertura)
+		agregado = colocar_faros(matriz, submarinos, parcial, indice + 1, minima)
+		submarinos.update(cobertura)
+		parcial.pop()
+		if agregado and (not minima or len(agregado) < len(minima)):
+			minima = agregado
+
+	salteado = colocar_faros(matriz, submarinos, parcial, indice + 1, minima)
+	if salteado and (not minima or len(salteado) < len(minima)):
+		minima = salteado
+
+	if agregado and (not salteado or len(agregado) < len(salteado)):
 		return agregado
-	return agregado if len(agregado) < len(salteado) else salteado
+	elif salteado:
+		return salteado
+	else:
+		return None
 
-# devolver una lista de faros. Cada faro debe ser una tupla con su posición en (x,y)
-# matriz booleana, indica True en las posiciones con submarinos
 def submarinos(matriz):
-	if len(matriz) == 0 or len(matriz[0]) == 0:
-		return []
-	elif len(matriz) == 5 and len(matriz[0]) == 5:
-		return [(3,3)]
-	return colocar_faros(matriz, [], len(matriz), len(matriz[0]), 0)
+	subs = buscar_submarinos(matriz)
+	resultado = colocar_faros(matriz, subs, [], 0, None)
+	if resultado:
+		return resultado
+	return []
 
-# COMO PONGO FAROS SOLO EN POSICIONES DE SUBMARINOS NO CUBRO TODAS LAS POSIBILIDADES
+'''
+Complejidad:
+	- 'colocar_faros()' por cada submarino pendiente verifica cobertura en O(s), donde s es el número de submarinos restantes, y la función se llama recursivamente O(2^(n*m)).
+Por lo que la complejidad final es:
+	O(2^(n * m) * s)
+'''

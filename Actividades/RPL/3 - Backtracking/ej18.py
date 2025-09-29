@@ -17,31 +17,27 @@ Métodos del grafo:
 	str
 '''
 
-def cant_ordenes(grafo, vertices, visitados):
-	if len(vertices) == len(visitados):
-		return 1
+def predecesores_visitados(grafo, v, visitados):
+	for ver in grafo.obtener_vertices():
+		if v in grafo.adyacentes(ver) and ver not in visitados:
+			return False
+	return True
+
+def contar_ordenamientos_bt(grafo, visitados, parcial, resultado):
+	if len(parcial) == len(grafo):
+		resultado.append(parcial.copy())
+		return
 	
-	cont = 0
-	for vertice in vertices:
-		if vertice not in visitados:
-			predecesores = []
-			for posible_predecesor in vertices:
-				if vertice in grafo.adyacentes(posible_predecesor):
-					predecesores.append(posible_predecesor)
-
-			todos_predecesores_visitados = True
-			for predecesor in predecesores:
-				if predecesor not in visitados:
-					todos_predecesores_visitados = False
-					break
-
-			if todos_predecesores_visitados:
-				visitados.append(vertice)
-				cont += cant_ordenes(grafo, vertices, visitados)
-				visitados.pop()
-
-	return cont
+	for v in grafo.obtener_vertices():
+		if v not in visitados and predecesores_visitados(grafo, v, visitados):
+			visitados.add(v)
+			parcial.append(v)
+			contar_ordenamientos_bt(grafo, visitados, parcial, resultado)
+			parcial.pop()
+			visitados.remove(v)
 
 def contar_ordenamientos(grafo):
-	vertices = grafo.obtener_vertices()
-	return cant_ordenes(grafo, vertices, [])
+	visitados = set()
+	resultado = []
+	contar_ordenamientos_bt(grafo, visitados, [], resultado)
+	return len(resultado)

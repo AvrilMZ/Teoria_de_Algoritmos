@@ -52,7 +52,7 @@ def crear_red(miembros, s, t):
 			if club not in vertices:
 				grafo.agregar_vertice(club)
 				t_clubes.append(club)
-			grafo.agregar_arista(club, miembro.nombre)
+			grafo.agregar_arista(club, miembro.nombre) # cada club debe estar representado por un miembro / cada persona puede representar a solo un club.
 		
 		if miembro.partido_politico not in vertices:
 			grafo.agregar_vertice(miembro.partido_politico)
@@ -65,14 +65,18 @@ def crear_red(miembros, s, t):
 	for club in t_clubes:
 		grafo.agregar_arista(s, club)
 
+	capacidad = len(t_clubes) // 2
 	for pp in t_pp:
-		grafo.agregar_arista(pp, t)
+		grafo.agregar_arista(pp, t, capacidad) # cada partido político no puede tener más de n/2 simpatizantes en la comisión.
 
 	return grafo
 
 # devolver un diccionario NombreRepresentante -> NombreClubRepresentado
 # si no se puede resolver dadas las características del problema, devolver None
 def representantes(miembros):
+	if len(miembros) <= 1:
+		return None
+	
 	s = "fuente"
 	t = "sumidero"
 	grafo = crear_red(miembros, s, t)
@@ -80,10 +84,22 @@ def representantes(miembros):
 	rep = {}
 
 	clubes = {club for miembro in miembros for club in miembro.clubes}
+	clubes_rep = set()
 	for arista in flujo_dic:
 		if arista[0] in clubes and flujo_dic[arista] == 1:
 			rep[arista[1]] = arista[0]
+			clubes_rep.add(arista[0])
+
+	if clubes_rep != clubes:
+		return None
 
 	return rep
 
-# FALTAN LAS RESTRINCCIONES (MIRAR TESTS FALLIDOS)
+'''
+Complejidad:
+	- Crear grafo: O(n * m), siendo n la cantidad de miembros y m la cantidad de clubes.
+	- Algoritmo Fors-Fulkerson: O(V * E^2), siendo V la cantidad de vertices y E la cantidad de aristas.
+	- Reconstruccion: O(E)
+Por lo que la complejidad final resulta en:
+	O(V * E^2)
+'''

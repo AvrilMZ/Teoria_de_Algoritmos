@@ -23,6 +23,6 @@ def obtener_flujo():
     flujo[("X", "super_sumidero")] = 2
 
     conjunto_fuente = ["S", "U", "V"]
-    conjunto_super_sumidero = ["T", "X", "super_sumidero"]
+    conjunto_super_sumidero = ["T", "W", "X", "Z", "super_sumidero"]
 
     return flujo, conjunto_fuente, conjunto_super_sumidero

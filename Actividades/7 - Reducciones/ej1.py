@@ -7,7 +7,7 @@ El problema de decision del Independent Set es si existe al menos un set de tama
 '''
 
 def verificador_is(grafo, set, k):
-	if len(set) != k:
+	if len(set) >= k:
 		return False
 	
 	for v in set:

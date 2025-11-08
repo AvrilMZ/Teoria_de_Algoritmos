@@ -73,5 +73,5 @@ def carlos(grafo_ciudad, casa, escuela, cant_hijos):
 
 '''
 Complejidad:
-    - O(V * E^2), por el algoritmo de Ford-Fulkerson.
+    - O(V * E), por el algoritmo de Ford-Fulkerson hecho con DFS.
 '''

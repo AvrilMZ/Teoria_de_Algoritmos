@@ -61,13 +61,58 @@ def quien_cocina(personas, dias):
 ```
 
 Complejidad:  
-- Crear la red: O(n * m), siendo n la cantidad de personas y m la cantidad de dias que tenia cada una asignada.
-- Flujo maximo: O(V * E), siendo V la cantidad de vertices del grafo y E las aristas.
-- Encontrar los cocineros: O(E)  
+- Crear la red: O(n^2), siendo n la cantidad de personas y cenas.
+- Flujo maximo: O(n * n^2), siendo V la cantidad de vertices del grafo y E las aristas.
+- Encontrar los cocineros: O(n^2)  
 Por lo tanto la complejidad final es:  
-    O(n * m)
+    O(n^3)
 
 ## Ejercicio 3
+Feedback Vertex Set: ¿existe un subset de vértices del grafo de tamaño a lo sumo k, tal que si eliminamos dichos vértices del grafo, este queda acíclico?  
+Vertex Cover: ¿existe un subset de vertices del grafo de tamaño a lo sumo k, tal que todas las aristas tengan al menos un extremo dentro de la solucion?
+
+Buscamos Vertex Cover $\le_p$ Feedback Vertex Set.  
+Primero debemos ver si FVS se encuentra en NP:
+```py
+def tiene_ciclo(grafo):
+    visitado = set()
+    for v in grafo.obtener_vertices():
+        if v not in visitado:
+            if dfs_ciclo_no_dirigido(grafo, v, visitado, None):
+                return True
+    return False
+
+def dfs_ciclo_no_dirigido(grafo, v, visitado, padre):
+    visitado.add(v)
+    for u in grafo.adyacentes(v):
+        if u not in visitado:
+            if dfs_ciclo_no_dirigido(grafo, u, visitado, v):
+                return True
+        elif u != padre: # Encontramos un ciclo
+            return True
+    return False
+
+def verificador(grafo, subset, k):
+    if len(subset) < k:
+        return False
+    vertices = grafo.obtener_vertices()
+    for v in subset:
+        if v not in vertices:
+            return False
+    grafo_reducido = grafo.copy()
+    for v in grafo_reducido:
+        if v in subset:
+            grafo_reducido.borrar_vertice(v)
+    return tiene_ciclo(grafo_reducido)
+```
+Dado que el verificador tiene complejidad O(v^2), siendo v los vertices del grafo reducido. Es asi que confirmamos que FVS se encuentra en NP.
+
+...
+
+-> Si existe Vertex Cover existe FVS:
+
+-> Si existe FVS existe Vertex Cover:
+
 
 
 ## Ejercicio 4

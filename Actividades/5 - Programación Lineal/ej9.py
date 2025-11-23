@@ -5,7 +5,7 @@ Implementar un modelo de programación lineal que determine el día de compra y 
 '''
 
 '''
-P_i: "Variable continua, precio del dia i"
+P_i: "Constante continua, precio del dia i"
 X_i: "Variable binaria, compro en el dia i"
 Y_i: "Varaible binaria, vendo en el dia i"
 

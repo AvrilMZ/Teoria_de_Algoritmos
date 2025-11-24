@@ -1,14 +1,9 @@
 '''
-Juan es ambicioso pero también algo vago. Dispone de varias ofertas de trabajo diarias, pero no quiere trabajar dos días seguidos. 
-Dado un arreglo con el monto esperado a ganar cada día, determinar, por programación dinámica, el máximo monto a ganar, sabiendo que no aceptará trabajar dos días seguidos. 
-Hacer una reconstrucción para verificar qué días debe trabajar. Indicar y justificar la complejidad del algoritmo implementado.
+Juan es ambicioso pero también algo vago. Dispone de varias ofertas de trabajo diarias, pero no quiere trabajar dos días seguidos. Dado un arreglo con el monto esperado a ganar cada día, determinar, por programación dinámica, el máximo monto a ganar, sabiendo que no aceptará trabajar dos días seguidos. Hacer una reconstrucción para verificar qué días debe trabajar. Indicar y justificar la complejidad del algoritmo implementado.
 
 Ejemplo:
-Para: [100, 5, 50, 1, 1, 200]
-Devolver: [0, 2, 5]
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "utilizando programación dinámica". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
+	Para: [100, 5, 50, 1, 1, 200]
+	Devolver: [0, 2, 5]
 '''
 
 '''

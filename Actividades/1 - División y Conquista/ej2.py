@@ -1,11 +1,13 @@
 '''
-Se tiene un arreglo tal que [1, 1, 1, …, 0, 0, …] (es decir, unos seguidos de ceros). 
-Se pide una función de complejidad O(log(n)) que encuentre el índice del primer 0. 
-Si no hay ningún 0 (solo hay unos), debe devolver -1.
+Se tiene un arreglo tal que [1, 1, 1, …, 0, 0, …] (es decir, unos seguidos de ceros). Se pide:
 
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "en O(log(n))". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se 
-busca que se implemente con dicha restricción (se hacen pruebas de volumen que deben ejecutar correctamente)
+a. Una función de orden O(log(⁡n)) que, por división y conquista, encuentre el índice del primer 0, de forma que se pueda reconocer rápidamente en qué modificación del código se dejó de pasar los tests. Si no hay ningún 0 (solo hay unos), debe devolver -1. 
+b. Demostrar con el Teorema Maestro que la función es, en efecto, O(log(⁡n)).
+
+Ejemplos:
+	[1, 1, 0, 0, 0] → 2
+	[0, 0, 0, 0, 0] → 0
+	[1, 1, 1, 1, 1] → -1
 '''
 def buscar_indice(arr, izq, der):
 	if izq > der:
@@ -22,3 +24,9 @@ def buscar_indice(arr, izq, der):
 
 def indice_primer_cero(arr):
 	return buscar_indice(arr, 0, len(arr) - 1)
+
+'''
+Teniendo en cuenta el teorema maestro:
+	T(n) = A T(n/B) + O(f(n)) -> A >= 0, B > 0
+
+'''

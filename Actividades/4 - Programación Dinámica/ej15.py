@@ -9,8 +9,6 @@ Ejemplos:
 	n = 6 --> Debe devolver 9 (producto máximo es 3 * 3)
 	n = 7 --> Debe devolver 12 (producto máximo es 3 * 4)
 	n = 10 --> Debe devolver 36 (producto máximo es 3 * 3 * 4)
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "utilizando programación dinámica". Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
 '''
 
 '''

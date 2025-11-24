@@ -1,5 +1,5 @@
 '''
-Escribir un algoritmo que, utilizando backtracking, dada una lista de enteros positivos L y un entero n devuelva todos los subconjuntos de L que suman exactamente n.
+Escribir un algoritmo que, utilizando backtracking, dada una lista de enteros positivos `L` y un entero `n` devuelva todos los subconjuntos de `L` que suman exactamente `n`.
 '''
 
 def sub_conj(lista, combinaciones, posibilidad, num, sum_actual, i_actual):

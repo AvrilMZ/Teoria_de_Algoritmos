@@ -1,8 +1,5 @@
 '''
 Implementar Merge Sort. Justificar la complejidad del algoritmo mediante el teorema maestro.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea de ordenamiento "por Merge Sort". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción
 '''
 
 def merge(izq, der):

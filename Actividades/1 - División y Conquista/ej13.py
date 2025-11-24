@@ -1,67 +1,11 @@
 '''
-Dado un arreglo de n enteros (no olvidar que pueden haber números negativos), encontrar el subarreglo contiguo de máxima suma, utilizando División y Conquista. 
-Indicar y justificar la complejidad del algoritmo. 
+Debido a la trágica situación actual, es necesario realizar tests para detectar si alguna persona está contagiada de COVID-19. El problema es que los insumos tienden a ser bastante caros, y no vivimos en un país al que los recursos le sobren.
 
-Ejemplos:
-	[5, 3, 2, 4, -1] ->  [5, 3, 2, 4]
-	[5, 3, -5, 4, -1] ->  [5, 3]
-	[5, -4, 2, 4, -1] -> [5, -4, 2, 4]
-	[5, -4, 2, 4] -> [5, -4, 2, 4]
-	[-3, 4, -1, 2, 1, -5] -> [4, -1, 2, 1]
+Supongamos que por persona se toma más de una muestra (lo cual es cierto, pero a fines del ejercicio supongamos que son muchas muestras), y que podemos realizar un testeo a más de una persona al mismo tiempo mezclando las muestras (lo cual también es cierto): determinamos un conjunto de personas a testear, obtenemos una muestra de cada una de ellas, las “juntamos”, y al conjunto le realizamos el test. Si el test resulta negativo, implica que todas las personas testeadas en conjunto resultaron negativas. Si resulta positivo, implica que al menos una de las personas testedas resulta positiva.
 
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "por división y conquista". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
-'''
+Suponer que existe una función `pcr(grupo)`, que devuelve true si al menos una persona del `grupo` es COVID-positivo, y `false` en caso contrario (los `grupos` pueden estar formados por 1 o más personas). Suponer que la positividad es extremadamente baja, e inclusive pueden suponer que va a haber una única persona contagiada (por simplicidad).
 
-def max_ambos(arr, inicio, mitad, fin):
-	suma = 0
-	mejor_izq = float("-inf")
-	idx_izq = mitad
-	for i in range(mitad, inicio - 1, -1):
-		suma += arr[i]
-		if suma > mejor_izq:
-			mejor_izq = suma
-			idx_izq = i
+Implementar un algoritmo que dado un conjunto de `n` personas, devuelva la o las personas contagiadas, utilizando la menor cantidad de tests posibles (considerando la notación Big Oh). En dicha notación, ¿cuántos tests se estarán utilizando?
 
-	suma = 0
-	mejor_der = float("-inf")
-	idx_der = mitad + 1
-	for i in range(mitad + 1, fin + 1):
-		suma += arr[i]
-		if suma > mejor_der:
-			mejor_der = suma
-			idx_der = i
-
-	return mejor_izq + mejor_der, idx_izq, idx_der
-
-def max_subarray_rec(arr, inicio, fin):
-	if inicio == fin:
-		return arr[inicio], inicio, fin
-	
-	mitad = (inicio + fin) // 2
-
-	max_izq, start_izq, end_izq = max_subarray_rec(arr, inicio, mitad)
-	max_der, start_der, end_der = max_subarray_rec(arr, mitad + 1, fin)
-	max_cruz, start_cruz, end_cruz = max_ambos(arr, inicio, mitad, fin)
-
-	if max_izq >= max_der and max_izq >= max_cruz:
-		return max_izq, start_izq, end_izq
-	elif max_der >= max_izq and max_der >= max_cruz:
-		return max_der, start_der, end_der
-	else:
-		return max_cruz, start_cruz, end_cruz
-
-
-def max_subarray(arr):
-	suma, inicio, fin = max_subarray_rec(arr, 0, len(arr) - 1)
-	return arr[inicio:fin + 1]
-
-'''
-Teniendo en cuenta el teorema maestro:
-	T(n)=AT(n/B)+O(f(n))
-Entonces:
-	T(n)=2T(n/2)+O(n) -> A>=1 y B>1
-	O(n) == n^(log_2(2))
-Por lo tanto la complejidad resulta en:
-	O(n*log(n))
+Pueden considerar que habrá una única persona contagiada, pero esto no cambiará el análisis a realizar.
 '''

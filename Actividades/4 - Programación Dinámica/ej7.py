@@ -3,12 +3,7 @@ Tenemos una mochila con una capacidad W. Hay elementos a guardar, cada uno tiene
 Queremos maximizar el valor de lo que llevamos sin exceder la capacidad.
 
 Implementar un algoritmo que, por programación dinámica, reciba los valores y pesos de los elementos, y devuelva qué elementos deben 
-ser guardados para maximizar la ganancia total.
-
-Indicar y justificar la complejidad del algoritmo implementado.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "utilizando programación dinámica". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
+ser guardados para maximizar la ganancia total. Indicar y justificar la complejidad del algoritmo implementado.
 '''
 
 '''

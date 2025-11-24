@@ -2,23 +2,6 @@
 Se tiene una matriz donde en cada celda hay submarinos, o no, y se quiere poner faros para iluminarlos a todos.
 
 Implementar un algoritmo que dé la cantidad mínima de faros que se necesitan para que todos los submarinos queden iluminados, siendo que cada faro ilumina su celda y además todas las adyacentes (incluyendo las diagonales), y las directamente adyacentes a estas (es decir, un “radio de 2 celdas”).
-
-Nota: el ejercicio puede resolverse sin el uso de Grafos, pero en caso de querer utilizarlo, está disponible como se describe.
-
-Métodos del grafo:
-	Grafo(dirigido = False, vertices_init = []) para crear un grafo no dirigido (hacer 'from grafo import Grafo')
-	Grafo(dirigido = True, vertices_init = []) para crear un grafo dirigido (hacer 'from grafo import Grafo')
-	agregar_vertice(self, v)
-	borrar_vertice(self, v)
-	agregar_arista(self, v, w, peso = 1)
-	borrar_arista(self, v, w)
-	estan_unidos(self, v, w)
-	peso_arista(self, v, w)
-	obtener_vertices(self)
-		Devuelve una lista con todos los vértices del grafo
-	vertice_aleatorio(self)
-	adyacentes(self, v)
-	str
 '''
 
 def comparten_area(submarino, faro):

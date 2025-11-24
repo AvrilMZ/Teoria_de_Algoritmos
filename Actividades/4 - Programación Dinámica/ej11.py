@@ -3,14 +3,7 @@ Dado un número K, se quiere obtener la mínima cantidad de operaciones para lle
 	(i) aumentar el valor del operando en 1;
 	(ii) duplicar el valor del operando.
 
-Implementar un algoritmo que, por programación dinámica, obtenga la menor cantidad de operaciones a realizar (y cuáles son dichas operaciones). 
-Desarrollar la ecuación de recurrencia. Indicar y justificar la complejidad del algoritmo implementado.
-Devolver un arreglo de las operaciones a realizar en orden. En texto cada opción es 'mas1' o 'por2'
-
-Aclaración: asegurarse de que el algoritmo presentado sea de programación dinámica, con su correspondiente ecuación de recurrencia.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "por programación dinámica". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
+Implementar un algoritmo que, por programación dinámica, obtenga la menor cantidad de operaciones a realizar (y cuáles son dichas operaciones). Desarrollar la ecuación de recurrencia. Indicar y justificar la complejidad del algoritmo implementado. Devolver un arreglo de las operaciones a realizar en orden. En texto cada opción es 'mas1' o 'por2'
 '''
 
 '''

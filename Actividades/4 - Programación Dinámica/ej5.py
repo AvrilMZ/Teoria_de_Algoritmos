@@ -1,18 +1,9 @@
 '''
-Dado un laberinto representado por una grilla, queremos calcular la ganancia máxima que existe desde la posición (0,0) hasta la posición NxM. 
-Los movimientos permitidos son, desde la esquina superior izquierda (el (0,0)), nos podemos mover hacia abajo o hacia la derecha. 
-Pasar por un casillero determinado (i, j) nos da una ganancia de V_{i,j}.
+Dado un laberinto representado por una grilla, queremos calcular la ganancia máxima que existe desde la posición (0,0) hasta la posición NxM. Los movimientos permitidos son, desde la esquina superior izquierda (el (0,0)), nos podemos mover hacia abajo o hacia la derecha. Pasar por un casillero determinado (i, j) nos da una ganancia de V_{i,j}.
 
-Implementar un algoritmo que, por programación dinámica, obtenga la máxima ganancia a través del laberinto. 
-Hacer una reconstrucción del camino que se debe transitar. 
-Indicar y justificar la complejidad del algoritmo implementado. 
-Si hay algunos lugares por los que no podemos pasar (obstáculos), ¿cómo se debe modificar para resolver el mismo problema?
+Implementar un algoritmo que, por programación dinámica, obtenga la máxima ganancia a través del laberinto. Hacer una reconstrucción del camino que se debe transitar. Indicar y justificar la complejidad del algoritmo implementado. Si hay algunos lugares por los que no podemos pasar (obstáculos), ¿cómo se debe modificar para resolver el mismo problema?
 
-Aclaración: solamente por simplicidad de las pruebas automáticas, devolver en este caso la ganancia máxima obtenible. 
-Tener en cuenta que en un examen se pediría la reconstrucción de cómo se obtiene la ganancia.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "utilizando programación dinámica". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
+Aclaración: solamente por simplicidad de las pruebas automáticas, devolver en este caso la ganancia máxima obtenible. Tener en cuenta que en un examen se pediría la reconstrucción de cómo se obtiene la ganancia.
 '''
 
 '''

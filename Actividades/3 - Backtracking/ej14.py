@@ -1,7 +1,7 @@
 '''
-Un set dominante (Dominating Set) de un grafo G es un subconjunto D de vértices de G, tal que para todo vértice de G: 
-	o bien (i) pertenece a D;
-	o bien (ii) es adyacente a un vértice en D.
+Un set dominante (Dominating Set) de un grafo `G` es un subconjunto `D` de vértices de `G`, tal que para todo vértice de `G`: 
+	o bien (i) pertenece a `D`;
+	o bien (ii) es adyacente a un vértice en `D`.
 
 Implementar un algoritmo que reciba un Grafo, y devuelva un dominating set de dicho grafo con la mínima cantidad de vértices.
 

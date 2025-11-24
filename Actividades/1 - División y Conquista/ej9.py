@@ -1,7 +1,5 @@
 '''
-Implementar una función (que utilice división y conquista) de complejidad O(n logn) que dado un arreglo de n números enteros devuelva true 
-o false según si existe algún elemento que aparezca más de la mitad de las veces. 
-Justificar el orden de la solución. 
+Implementar una función (que utilice división y conquista) de complejidad O(n logn) que dado un arreglo de n números enteros devuelva true o false según si existe algún elemento que aparezca más de la mitad de las veces. Justificar el orden de la solución. 
 
 Ejemplos:
 	[1, 2, 1, 2, 3] -> false
@@ -9,12 +7,7 @@ Ejemplos:
 	[1, 2, 3, 1, 1, 1] -> true
 	[1] -> true
 
-Aclaración: Este ejercicio puede resolverse, casi trivialmente, ordenando el arreglo con un algoritmo eficiente, 
-o incluso se puede realizar más rápido utilizando una tabla de hash. 
-Para hacer interesante el ejercicio, resolver sin ordenar el arreglo, sino puramente división y conquista.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "por división y conquista, en O(n log(n))". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
+Aclaración: Este ejercicio puede resolverse, casi trivialmente, ordenando el arreglo con un algoritmo eficiente, o incluso se puede realizar más rápido utilizando una tabla de hash. Para hacer interesante el ejercicio, resolver sin ordenar el arreglo, sino puramente división y conquista.
 '''
 
 def encontrar_numero(arr, left, right):

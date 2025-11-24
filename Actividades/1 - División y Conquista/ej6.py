@@ -1,9 +1,6 @@
 '''
 Implementar un algoritmo de multiplicación de dos números grandes de longitud n, por división y conquista, con un orden de complejidad mejor que O(n^2). 
 Justificar la complejidad del algoritmo mediante el teorema maestro.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "por división y conquista, en tiempo mejor que O(n^2)". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción
 '''
 
 def multiplicar(a, b):

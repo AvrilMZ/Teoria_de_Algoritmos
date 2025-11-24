@@ -1,6 +1,5 @@
 '''
-Un camino hamiltoniano, es un camino de un grafo, que visita todos los vértices del grafo una sola vez. 
-Implementar un algoritmo por backtracking que encuentre un camino hamiltoniano de un grafo dado.
+Un camino hamiltoniano, es un camino de un grafo, que visita todos los vértices del grafo una sola vez. Implementar un algoritmo por backtracking que encuentre un camino hamiltoniano de un grafo dado.
 
 Métodos del grafo:
 	Grafo(dirigido = False, vertices_init = []) para crear (hacer 'from grafo import Grafo')

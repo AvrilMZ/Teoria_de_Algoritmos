@@ -1,12 +1,6 @@
 '''
-Dados un conjunto de n elementos, y 2 arreglos de longitud n, con dichos elementos. 
-El arreglo A está completamente ordenado de menor a mayor. 
-El arreglo B se encuentra desordenado. 
-Indicar, por división y conquista, la cantidad de inversioes necesarias al arreglo B para que quede ordenado de menor a mayor, con un orden de complejidad mejor que O(n^2). 
-Justificar la complejidad del algoritmo mediante el teorema maestro.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "en tiempo mejor que O(n^2)". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción
+Dados un conjunto de n elementos, y 2 arreglos de longitud n, con dichos elementos. El arreglo A está completamente ordenado de menor a mayor. El arreglo B se encuentra desordenado. 
+Indicar, por división y conquista, la cantidad de inversioes necesarias al arreglo B para que quede ordenado de menor a mayor, con un orden de complejidad mejor que O(n^2). Justificar la complejidad del algoritmo mediante el teorema maestro.
 '''
 
 def merge_count(izq, der):

@@ -1,5 +1,6 @@
 '''
 Dado el teclado numérico de un celular, y un número inicial k, encontrar la cantidad de posibles números de longitud N empezando por botón del número inicial k. 
+
 Restricción: solamente se puede presionar un botón si está arriba, abajo, a izquierda, o derecha del botón actual. 
 Implementar el algoritmo por programación dinámica. Indicar y justificar la complejidad del algoritmo implementado. 
 

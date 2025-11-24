@@ -5,9 +5,6 @@ Se desea devolver el cambio pedido, usando la mínima cantidad de monedas/billet
 Implementar un algoritmo que, por programación dinámica, reciba un arreglo de valores del sistema monetario, y la cantidad de cambio 
 objetivo a dar, y devuelva qué monedas/billetes deben ser utilizados para minimizar la cantidad total utilizda. 
 Indicar y justificar la complejidad del algoritmo implementado.
-
-Nota sobre RPL: en este ejercicio se pide cumplir la tarea "por programación dinámica". 
-Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
 '''
 
 '''

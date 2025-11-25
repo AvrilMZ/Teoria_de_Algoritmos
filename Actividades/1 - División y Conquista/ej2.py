@@ -28,5 +28,13 @@ def indice_primer_cero(arr):
 '''
 Teniendo en cuenta el teorema maestro:
 	T(n) = A T(n/B) + O(f(n)) -> A >= 0, B > 0
-
+Sabemos que:
+	- A = 1
+	- B = 2
+	- O(f(n)) = O(1)
+Por lo que:
+	T(n) = 1 T(n/2) + O(1)
+	O(1) = n^{log_2(1)}
+Resultando en una complejidad:
+	O(log(n))
 '''

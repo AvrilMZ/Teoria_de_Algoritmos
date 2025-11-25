@@ -9,3 +9,30 @@ Implementar un algoritmo que dado un conjunto de `n` personas, devuelva la o las
 
 Pueden considerar que habrá una única persona contagiada, pero esto no cambiará el análisis a realizar.
 '''
+
+def buscar_contagiados(personas, inicio, fin):
+	if inicio + 1 == fin:
+		return personas[inicio]
+	medio = (inicio + fin) // 2
+	if pcr(personas[inicio:medio]):
+		return buscar_contagiados(personas, inicio, medio)
+	return buscar_contagiados(personas, medio, fin)
+	
+def contagiados(personas):
+	if not pcr(personas):
+		return []
+	return buscar_contagiados(personas, 0, len(personas))
+
+'''
+Teniendo en cuenta el teorema maestro:
+	T(n) = A T(n/B) + O(f(n)) -> A >= 1, B > 1
+Dado que:
+	- A (cantidad de llamados recursivos) = 1
+	- B (cantidad por la que se divide el problema) = 2
+	- O(f(n)) (costo de procesamiento) = O(1)
+Por lo que:
+	T(n) = 1 T(n/2) + O(1)
+	O(1) = n^{log_2(1)}
+Resultando en la complejidad (cantidad de tests utilizados):
+	O(log(n))
+'''

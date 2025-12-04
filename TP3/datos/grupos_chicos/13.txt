@@ -1,0 +1,15 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+9
+Amon, 797
+Hama, 384
+Sura I, 413
+Pakku, 877
+Sura I, 425
+Hama, 667
+Katara, 260
+Rafa, 631
+Pakku, 328
+Amon I, 536
+Amon, 104
+Sura, 154
+Amon, 307

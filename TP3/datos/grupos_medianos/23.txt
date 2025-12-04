@@ -1,0 +1,25 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+11
+Katara, 662
+Misu, 326
+Rafa, 14
+Katara, 479
+Wei, 643
+Ming-Hua I, 964
+Sangok, 224
+Hama, 88
+Amon, 226
+Ming-Hua, 994
+Ming-Hua I, 162
+Hama, 835
+Amon I, 639
+Amon, 131
+Tho, 628
+Sura I, 173
+Tho, 281
+Amon I, 911
+Ming-Hua, 95
+Misu, 189
+Pakku, 592
+Hama, 776
+Katara, 10

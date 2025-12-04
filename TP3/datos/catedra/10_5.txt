@@ -1,0 +1,12 @@
+# La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'
+5
+Siku, 169
+Hasook, 27
+Desna, 76
+Desna I, 156
+Siku I, 196
+Unalaq, 132
+Sura, 102
+Misu, 198
+Katara, 200
+Eska, 74

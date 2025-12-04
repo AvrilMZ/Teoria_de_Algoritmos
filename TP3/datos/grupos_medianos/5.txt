@@ -1,0 +1,7 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+2
+Yakone, 174
+Ming-Hua I, 175
+Yakone, 589
+La, 17
+Sura, 12

@@ -1,0 +1,7 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+2
+Sura I, 957
+Ming-Hua, 583
+La, 897
+Rafa, 546
+Amon I, 811

@@ -1,0 +1,12 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+7
+Sura I, 211
+Tho, 37
+Amon, 238
+Misu, 960
+Hama, 498
+Hama I, 565
+Amon, 216
+Amon, 282
+Sura I, 872
+Unalaq, 21

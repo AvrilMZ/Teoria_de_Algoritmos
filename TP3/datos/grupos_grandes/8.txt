@@ -1,0 +1,10 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+2
+Amon I, 354
+Hama, 905
+Unalaq, 991
+La, 119
+Amon, 722
+Wei, 499
+Amon, 881
+Sangok, 858

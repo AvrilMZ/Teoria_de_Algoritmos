@@ -1,0 +1,8 @@
+# La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'
+4
+Sura, 232
+Hama, 99
+Sangok, 86
+Eska, 484
+Huu, 677
+Ming-Hua, 62

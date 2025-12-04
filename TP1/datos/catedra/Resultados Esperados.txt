@@ -1,0 +1,22 @@
+Por supuesto, el programa real debería emitir el orden, además del coeficiente. Aquí únicamente marcamos el valor esperado del coeficiente.
+
+10.txt
+Coeficiente de impacto: 309600
+
+50.txt
+Coeficiente de impacto: 5218700
+
+100.txt
+Coeficiente de impacto: 780025365
+
+1000.txt
+Coeficiente de impacto: 74329021942
+
+5000.txt
+Coeficiente de impacto: 1830026958236
+
+10000.txt
+Coeficiente de impacto: 7245315862869
+
+100000.txt
+Coeficiente de impacto: 728684685661017

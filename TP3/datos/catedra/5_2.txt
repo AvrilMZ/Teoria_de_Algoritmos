@@ -1,0 +1,7 @@
+# La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'
+2
+Pakku, 101
+Yue, 134
+Yakone, 759
+Pakku I, 308
+Wei, 644

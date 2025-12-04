@@ -1,0 +1,17 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+11
+Katara, 660
+Misu, 244
+Tonraq, 985
+Wei, 29
+Tho, 941
+La, 297
+Pakku, 806
+Kuruk, 202
+Tonraq, 288
+Amon I, 828
+Katara, 622
+Sura, 986
+La, 730
+Hama, 885
+Rafa, 125

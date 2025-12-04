@@ -1,0 +1,10 @@
+La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'.
+4
+Hama I, 106
+Unalaq, 757
+Katara, 43
+Misu, 461
+La, 85
+Tonraq, 817
+Wei, 37
+Ming-Hua, 618

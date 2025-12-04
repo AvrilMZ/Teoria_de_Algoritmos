@@ -1,0 +1,22 @@
+# La primera linea indica la cantidad de grupos a formar, las siguientes son de la forma 'nombre maestro, habilidad'
+4
+Sura, 392
+Rafa, 575
+Tonraq, 468
+Katara, 187
+Sura I, 936
+Siku, 442
+Tho, 843
+Hasook, 26
+Hama, 346
+Ming-Hua, 576
+Kya, 264
+Wei, 733
+Tonraq I, 414
+Sangok, 872
+Sangok I, 126
+Siku I, 902
+Wei I, 86
+Sangok II, 84
+Yue, 451
+Tho I, 460

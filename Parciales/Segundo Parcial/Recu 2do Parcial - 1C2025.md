@@ -52,7 +52,7 @@ def quien_cocina(personas, dias):
     cocineros = {}
     for arista in flujo_max:
         origen, destino:
-        if origen in personas.keys() and flujo_max[origen]:
+        if origen in personas.keys() and flujo_max[(origen, destino)]:
             cocineros[destino] = origen # dia i: persona
 
     if len(cocineros) != len(dias):

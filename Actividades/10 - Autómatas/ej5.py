@@ -38,4 +38,28 @@ from automata import Automata
 def expresion():
 	a = Automata()
 	
+	a.estado("Q0", True, True)
+	a.estado("Q1")
+	a.estado("Q2")
+	a.estado("Q3")
+	a.estado("Q4")
+	a.estado("Q5", False, True)
+
+	a.transicion_estado("Q3", "Q0", '')
+	
+	# b*
+	a.transicion_estado("Q0", "Q0", 'b')
+
+	# (ab)*
+	a.transicion_estado("Q0", "Q1", 'a')
+	a.transicion_estado("Q1", "Q0", 'b')
+
+    # (ab)+
+	a.transicion_estado("Q1", "Q2", 'b')
+	a.transicion_estado("Q2", "Q1", 'a')
+
+	# ba*
+	a.transicion_estado("Q2", "Q3", 'b')
+	a.transicion_estado("Q3", "Q3", 'a')
+
 	return a

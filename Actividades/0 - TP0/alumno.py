@@ -24,27 +24,26 @@ Se puede acceder a la altura de un alumno haciendo varible_tipo_alumno.altura.
 Importante: considerar que si la prueba de volumen no pasa, es probable que sea porque no están cumpliendo con la complejidad requerida.
 '''
 
-def validar_mas_bajo(alumnos, indice):
-	if indice == 0:
-		return alumnos[indice].altura < alumnos[indice + 1].altura
-	elif indice == len(alumnos) - 1:
-		return alumnos[indice].altura < alumnos[indice - 1].altura
-	return (alumnos[indice].altura < alumnos[indice - 1].altura and 
-		alumnos[indice].altura < alumnos[indice + 1].altura)
+def dyc_indice_mas_bajo(inicio, fin, alumnos):
+    if inicio == fin:
+        return inicio
+
+    medio = (inicio + fin) // 2
+    if validar_mas_bajo(alumnos, medio):
+        return medio
+    if alumnos[medio + 1].altura < alumnos[medio].altura:
+        return dyc_indice_mas_bajo(medio + 1, fin, alumnos)
+    else:
+        return dyc_indice_mas_bajo(inicio, medio, alumnos)
 
 def indice_mas_bajo(alumnos):
-	izquierda = 0
-	derecha = len(alumnos) - 1
-	
-	while izquierda <= derecha:
-		pivote = (izquierda + derecha) // 2
-		
-		if validar_mas_bajo(alumnos, pivote):
-			return pivote
-		
-		if alumnos[pivote + 1].altura < alumnos[pivote].altura:
-			izquierda = pivote + 1
-		else:
-			derecha = pivote - 1
+    return dyc_indice_mas_bajo(0, len(alumnos) - 1, alumnos)
 
-	return -1
+def validar_mas_bajo(alumnos, indice):
+    if indice == 0:
+        return alumnos[indice + 1].altura > alumnos[indice].altura
+    if indice == len(alumnos) - 1:
+        return alumnos[indice - 1].altura > alumnos[indice].altura
+    if alumnos[indice - 1].altura > alumnos[indice].altura and alumnos[indice + 1].altura > alumnos[indice].altura:
+        return True
+    return False

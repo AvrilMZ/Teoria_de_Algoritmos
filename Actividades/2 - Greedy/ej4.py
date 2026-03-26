@@ -8,16 +8,16 @@ Nota sobre RPL: en este ejercicio se pide cumplir la tarea "con un algoritmo Gre
 Por las características de la herramienta, no podemos verificarlo de forma automática, pero se busca que se implemente con dicha restricción.
 '''
 
-def charlas_superpuestas(anterior, nueva):
-	return anterior[1] > nueva[0]
+def es_charla_apta(charla, anterior):
+	return anterior[1] < charla[0]
 
 def charlas(horarios):
-	horarios_ordenados = sorted(horarios, key=lambda rango: rango[1])
-	charlas = []
-	for horario in horarios_ordenados:
-		if len(charlas) == 0 or not charlas_superpuestas(charlas[-1], horario):
-			charlas.append(horario)
-	return charlas
+	ordenados = sorted(horarios, key=lambda x: x[1])
+	a_dar = []
+	for charla in ordenados:
+		if len(a_dar) == 0 or es_charla_apta(charla, a_dar[-1]):
+			a_dar.append(charla)
+	return a_dar
 
 '''
 Inicialmente tenemos un arreglo de tuplas que se ordena mediante sus horarios de finalizacion, utilizando un `sorted()` de complejidad O(n*log(n)).

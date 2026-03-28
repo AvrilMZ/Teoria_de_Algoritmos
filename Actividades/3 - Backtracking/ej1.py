@@ -38,9 +38,9 @@ def _rec_no_adyacentes(grafo, vertices, i_actual, n, sol):
             return resul
         sol.pop()
 
-	return _rec_no_adyacentes(grafo, vertices, i_actual + 1, n, sol)
+    return _rec_no_adyacentes(grafo, vertices, i_actual + 1, n, sol)
 
 def no_adyacentes(grafo, n):
-	'Devolver una lista con los n vértices, o None de no ser posible'
-	vertices = grafo.obtener_vertices()
-	return _rec_no_adyacentes(grafo, vertices, 0, n, [])
+    'Devolver una lista con los n vértices, o None de no ser posible'
+    vertices = grafo.obtener_vertices()
+    return _rec_no_adyacentes(grafo, vertices, 0, n, [])

@@ -17,27 +17,30 @@ Métodos del grafo:
 	str
 '''
 
-from grafo import Grafo
+def compatible(grafo, v, sol):
+    for vecino in grafo.adyacentes(v):
+        if vecino in sol:
+            return False
+    return True
 
-def no_adyacentes_dfs(grafo, vertices, indice_actual, visitados, n):
-	if len(visitados) == n:
-		return visitados
-	
-	if indice_actual == len(vertices): # Se recorrieron todos y no se consiguio el subconjunto
-		return None
-	
-	vertice = vertices[indice_actual]
-	
-	if all(vecino not in visitados for vecino in grafo.adyacentes(vertice)):
-		visitados.append(vertice)
-		v = no_adyacentes_dfs(grafo, vertices, indice_actual + 1, visitados, n)
-		if v:
-			return v
-		visitados.pop() # Deshago para probar otra posibilidad
+def _rec_no_adyacentes(grafo, vertices, i_actual, n, sol):
+    if len(sol) == n:
+        return sol[:]
+    
+    if i_actual == len(vertices):
+        return None
+    
+    actual = vertices[i_actual]
+    if compatible(grafo, actual, sol):
+        sol.append(actual)
+        resul = _rec_no_adyacentes(grafo, vertices, i_actual + 1, n, sol)
+        if resul is not None:
+            return resul
+        sol.pop()
 
-	return no_adyacentes_dfs(grafo, vertices, indice_actual + 1, visitados, n) # El vertice anterior no cumple entonces sigo
+	return _rec_no_adyacentes(grafo, vertices, i_actual + 1, n, sol)
 
 def no_adyacentes(grafo, n):
-	visitados = []
+	'Devolver una lista con los n vértices, o None de no ser posible'
 	vertices = grafo.obtener_vertices()
-	return no_adyacentes_dfs(grafo, vertices, 0, visitados, n)
+	return _rec_no_adyacentes(grafo, vertices, 0, n, [])

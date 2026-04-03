@@ -30,7 +30,7 @@ m la cantidad de bolsas.
 Finalmente la complejidad resulta en O(n * log(n) + m)
 
 No es un algoritmo optimo ya que puede que colocando los productos en un orden distinto minimice todavia mas la cantidad. Por ejemplo:
-- Si se tienen los libros [2,4,6,3,1] y cada caja tiene un peso maximo de 8.
+- Si se tienen los productos [2,4,6,3,1] y cada bolsa tiene un peso maximo de 8.
 - El algoritmo devolveria:
 	[[2,4,1],[6],[3]] -> 3 bolsas
 cuando el optimo seria:

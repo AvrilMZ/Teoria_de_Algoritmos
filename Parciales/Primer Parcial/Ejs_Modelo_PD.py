@@ -1,27 +1,27 @@
 # ==============================================================================================================
 # ==============================================================================================================
 # PROBLEMAS CONOCIDOS:
-# 	- Scheduling/Juan el vago:
-# 		OPT[n] = max(OPT[n - 2] + ganancia(n), OPT[n - 1])
+#	- Scheduling/Juan el vago:
+#		OPT[n] = max(OPT[n - 2] + ganancia(n), OPT[n - 1])
 #	- Problema del cambio:
 #		OPT[n] = 1 + min(OPT[n - i]), para todo i perteneciente al sistema monetario
 #	- Problema de los n escalones/Formas distintas de dar cambio:
 #		OPT[n] = \sum OPT[n - i], siendo i todos los escalones/billetes anteriores a n.
 #	- Laberinto: 
-# 		OPT[i][j] = matriz[i - 1][j - 1] + max(OPT[i - 1][j], OPT[i][j - 1])
-# 	- Teclado del telefono: 
-# 		OPT[n][m] = \sum_{v = vecinos de m} OPT[n - 1][v]
+#		OPT[i][j] = matriz[i - 1][j - 1] + max(OPT[i - 1][j], OPT[i][j - 1])
+#	- Teclado del telefono: 
+#		OPT[n][m] = \sum_{v = vecinos de m} OPT[n - 1][v]
 #	- Mochila/Subset-sum: 
-# 		OPT[n][W] = max(OPT[n - 1][W - peso(OPT[n][W])] + valor(OPT[n][W]), OPT[n - 1][W])
-# 	- Londres-California:
+#		OPT[n][W] = max(OPT[n - 1][W - peso(OPT[n][W])] + valor(OPT[n][W]), OPT[n - 1][W])
+#	- Londres-California:
 #		California:
 #			OPT_C[n] = min(OPT_L[n - 1] + M, OPT_C[n - 1]) + C[n]
 #		Londres:
 #			OPT_L[n] = min(OPT_C[n - 1] + M, OPT_L[n - 1]) + L[n]
 #	- Problema de la soga:
-#		OPT[n] = 
+#		OPT[n] = max(max(i * (n - i), OPT[i] * OPT[n - i], OPT[i] * (i * n), i * OPT[n - 1]))
 #	- Problema de Osvaldo:
-#		OPT[n] = 
+#		OPT[n] = max(0, OPT[k - 1] + p[k] - p[k - 1])
 # ==============================================================================================================
 # ==============================================================================================================
 

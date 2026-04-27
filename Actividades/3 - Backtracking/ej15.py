@@ -6,7 +6,7 @@ Implementar un algoritmo que, por backtracking, obtenga el conjunto de grupos qu
 
 def grupos_rec(mesa, grupos, conj, indice):
 	if indice == len(grupos) or sum(conj) == mesa:
-		return conj.copy()
+		return conj[:]
 
 	agrego = []
 	if sum(conj) + grupos[indice] <= mesa:
@@ -18,12 +18,9 @@ def grupos_rec(mesa, grupos, conj, indice):
 
 	if sum(agrego) > sum(salteo):
 		return agrego
-	else:
-		return salteo
+	return salteo
 
 def max_grupos_bodegon(P, W):
 	if len(P) == 1 and P[0] <= W:
 		return [P[0]]
-	
-	conj = []
-	return grupos_rec(W, P, conj, 0)
+	return grupos_rec(W, P, [], 0)

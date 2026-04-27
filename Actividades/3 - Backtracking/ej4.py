@@ -26,39 +26,32 @@ luego comparo cual de las soluciones es la mayor y la guardo
 repito con el que sigue y asi sucesivamente
 '''
 
-from grafo import Grafo
-
 def es_vertice_apto(grafo, vertice, i_set):
 	for v in i_set:
 		for vecino in grafo.adyacentes(v):
 			if vecino == vertice:
 				return False
 	return True
-
-def is_backtracking(grafo, vertices, i_set, indice):
-	if len(vertices) == indice:
-		return list(i_set)
-
-	vertice = vertices[indice]
-
-	record = []
-	if es_vertice_apto(grafo, vertice, i_set):
-		i_set.append(vertice)
-		agrego = is_backtracking(grafo, vertices, i_set, indice + 1)
-		if len(agrego) > len(record):
-			record = agrego
-		i_set.pop()
 		
-	salteo = is_backtracking(grafo, vertices, i_set, indice + 1)
-	if len(salteo) > len(record):
-		record = salteo
+def is_bt(grafo, vertices, indice, sol_actual, sol_mejor):
+	if indice == len(vertices):
+		if sol_mejor is None or len(sol_actual) > len(sol_mejor):
+			sol_mejor = sol_actual[:]
+		return sol_mejor
+	
+	v = vertices[indice]
+	agrego = []
+	if es_vertice_apto(grafo, v, sol_actual):
+		sol_actual.append(vertices[indice])
+		agrego = is_bt(grafo, vertices, indice + 1, sol_actual, sol_mejor)
+		sol_actual.pop()
 
-	return record
-		
+	salteo = is_bt(grafo, vertices, indice + 1, sol_actual, sol_mejor)
+
+	if len(agrego) > len(salteo):
+		return agrego
+	return salteo
+
 def independent_set(grafo):
 	vertices = grafo.obtener_vertices()
-	i_set = []
-	r = is_backtracking(grafo, vertices, i_set, 0)
-	if r:
-		return r
-	return []
+	return is_bt(grafo, vertices, 0, [], None)

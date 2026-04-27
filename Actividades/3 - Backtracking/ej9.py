@@ -8,19 +8,25 @@ Considerar que existe una función `son_compatibles(curso_1, curso_2)` que dados
 
 from compatibles import *
 
-def comb_backtracking(materias, i, visitados, combinaciones):
-	if i == len(materias):
-		combinaciones.append(visitados.copy())
-		return
+def compatible_con_todos(curso, visitados):
+	for c in visitados:
+		if not son_compatibles(curso, c):
+			return False
+	return True
 
-	for curso in materias[i]:
-		if all(son_compatibles(curso, c) for c in visitados):
+def comb_backtracking(materias, indice, visitados):
+	if indice == len(materias):
+		return [visitados[:]]
+
+	combinaciones = []
+	for curso in materias[indice]:
+		if compatible_con_todos(curso, visitados):
 			visitados.append(curso)
-			comb_backtracking(materias, i + 1, visitados, combinaciones)
+			sol = comb_backtracking(materias, indice + 1, visitados)
+			combinaciones.extend(sol)
 			visitados.pop()
+	
+	return combinaciones
 
 def obtener_combinaciones(materias):
-	combinaciones = []
-	visitados = []
-	comb_backtracking(materias, 0, visitados, combinaciones)
-	return combinaciones
+	return comb_backtracking(materias, 0, [])

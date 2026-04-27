@@ -21,8 +21,6 @@ Métodos del grafo:
 	str
 '''
 
-from grafo import Grafo
-
 def es_adyacente(grafo, subset, vertice):
 	adyacentes = grafo.adyacentes(vertice)
 	for v in subset:
@@ -36,32 +34,24 @@ def dominante(grafo, subset):
 			return False
 	return True
 
-def dsm_backtracking(grafo, vertices, subset, indice):
-	if len(vertices) == indice:
+def dsm_backtracking(grafo, vertices, subset, indice, mejor):
+	if indice == len(vertices):
 		if dominante(grafo, subset):
-			return list(subset)
-		return None
+			mejor = subset[:]
+		return mejor
 	
 	vertice = vertices[indice]
 
 	subset.append(vertice)
-	agrego = dsm_backtracking(grafo, vertices, subset, indice + 1)
+	agrego = dsm_backtracking(grafo, vertices, subset, indice + 1, mejor)
 	subset.pop()
 
-	salteo = dsm_backtracking(grafo, vertices, subset, indice + 1)
+	salteo = dsm_backtracking(grafo, vertices, subset, indice + 1, mejor)
 
-	record = None
-	if agrego is not None and (record is None or len(agrego) < len(record)):
-		record = agrego
-	if salteo is not None and (record is None or len(salteo) < len(record)):
-		record = salteo
-	return record
+	if len(agrego) < len(salteo):
+		return agrego
+	return salteo
 
 def dominating_set_min(grafo):
-	subset = []
 	vertices = grafo.obtener_vertices()
-	r = dsm_backtracking(grafo, vertices, subset, 0)
-	if r:
-		return r
-	else:
-		return []
+	return dsm_backtracking(grafo, vertices, [], 0, vertices)

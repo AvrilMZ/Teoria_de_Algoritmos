@@ -7,28 +7,27 @@ Por ejemplo, con n = 2 y s = 7, debe devolver [[1, 6], [2, 5], [3, 4], [4, 3], [
 '''
 
 def sum_backtracking(combinaciones, posibilidad, cant_dados, s_total, s_actual):
-	if len(posibilidad) == cant_dados and s_actual == s_total:
-		combinaciones.append(posibilidad.copy()) # O(n) -> n = cant. elementos de posibilidad = cant. dados
-		return
+	if len(posibilidad) == cant_dados:
+		if s_actual == s_total:
+			return [posibilidad[:]]
+		return []
 	
 	cant_faltan = cant_dados - len(posibilidad)
 	if s_actual + (cant_faltan * 1) > s_total or s_actual + (cant_faltan * 6) < s_total:
-		return
+		return []
 
+	combinaciones = []
 	for num in range(1, 7): # O(m) -> m = cant. de numeros en un dado
 		if len(posibilidad) < cant_dados and s_actual + num <= s_total:
 			posibilidad.append(num)
-			sum_backtracking(combinaciones, posibilidad, cant_dados, s_total, s_actual + num) # O(m ** n) -> n = cant. de dados
+			sol = sum_backtracking(combinaciones, posibilidad, cant_dados, s_total, s_actual + num) # O(m ** n) -> n = cant. de dados
+			combinaciones.extend(sol)
 			posibilidad.pop()
 
-	return
+	return combinaciones
 
 def sumatoria_dados(n, s):
-	if n == 1 and 1 <= s <= 6:
-		return [[s]]
-	combinaciones = []
-	sum_backtracking(combinaciones, [], n, s, 0)
-	return combinaciones
+	return sum_backtracking([], [], n, s, 0)
 
 '''
 Complejidad:

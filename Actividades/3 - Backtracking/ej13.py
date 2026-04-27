@@ -19,8 +19,6 @@ Métodos del grafo:
 	str
 '''
 
-from grafo import Grafo
-
 def cubre_todas_aristas(grafo, visitados):
 	for vertice in grafo.obtener_vertices():
 		for vecino in grafo.adyacentes(vertice):
@@ -28,32 +26,24 @@ def cubre_todas_aristas(grafo, visitados):
 				return False
 	return True
 
-def buscar_min_vc(grafo, vertices, visitados, indice_actual):
-	if len(vertices) == indice_actual:
+def buscar_min_vc(grafo, vertices, visitados, indice, mejor):
+	if len(vertices) == indice:
 		if cubre_todas_aristas(grafo, visitados):
-			return list(visitados)
-		return None
+			mejor = visitados[:]
+		return mejor
 	
-	vertice = vertices[indice_actual]
+	vertice = vertices[indice]
 
 	visitados.append(vertice)
-	agrego_v = buscar_min_vc(grafo, vertices, visitados, indice_actual + 1)
+	agrego = buscar_min_vc(grafo, vertices, visitados, indice + 1, mejor)
 	visitados.pop()
 
-	salteo_v = buscar_min_vc(grafo, vertices, visitados, indice_actual + 1)
+	salteo = buscar_min_vc(grafo, vertices, visitados, indice + 1, mejor)
 
-	mejor = None
-	if agrego_v is not None and (mejor is None or len(agrego_v) < len(mejor)):
-		mejor = agrego_v
-	if salteo_v is not None and (mejor is None or len(salteo_v) < len(mejor)):
-		mejor = salteo_v
-	return mejor
+	if len(agrego) < len(salteo):
+		return agrego
+	return salteo
 		
 def vertex_cover_min(grafo):
 	vertices = grafo.obtener_vertices()
-	visitados = []
-	r = buscar_min_vc(grafo, vertices, visitados, 0)
-	if r: 
-		return r 
-	else: 
-		return []
+	return buscar_min_vc(grafo, vertices, [], 0, vertices)

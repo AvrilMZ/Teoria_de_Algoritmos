@@ -3,10 +3,10 @@ Implementar un modelo de programación lineal que resuelva el problema de Vertex
 '''
 
 '''
-X: "Constante, vertice"
-V: "Variable binaria, vertice visitado o no"
+V_i: Variable binaria, si el vertice i se encuentra en la solucion.
 
-\min{\sum_{n = 0}^{n} X_i * V_i}
+\min{\sum_{i = 0}^{n} V_i}
 
-donde V_i + V_j > 0 -> para todo (i, j) que pertenece al grafo
+Restrincciones:
+- V_i + V_j >= 1, para todo V_i conectado mediante una arista a V_j
 '''

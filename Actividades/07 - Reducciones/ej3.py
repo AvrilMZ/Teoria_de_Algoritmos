@@ -1,10 +1,10 @@
-'''
+"""
 Dados los problemas de decisiones de Independent Set y Vertex Cover, realizar dos reducciones.
-	a. Reducir Independent Set a Vertex Cover.
-	b. Reducir Vertex Cover a Independent Set.
-'''
+        a. Reducir Independent Set a Vertex Cover.
+        b. Reducir Vertex Cover a Independent Set.
+"""
 
-'''
+"""
 Independent Set: ¿Existe un conjunto k de vertices en el problema Vertex Cover tal que sea Independent Set?
 Vertex Cover: ¿Exisite un conjunto k de vertices en el problema Independent Set tal que sea Vertex Cover?
 
@@ -26,4 +26,4 @@ Consideremos V_i y V_j a vertices pertenenicentes al grafo y unidos por una aris
 	- V_i pertenece a la solucion del Independent Set y V_j no, entonces tambien pertenece a la solucion de Vertex Cover.
 	- Si V_i y V_j no estan en la solucion de Independent Set entonces no pertenecen a la solucion de Vertex Cover.
 Es asi donde vemos la relacion de que si G es el grafo con el que se trabaja: G - S = C -> Complemento de Independent Set = Vertex Cover
-'''
+"""

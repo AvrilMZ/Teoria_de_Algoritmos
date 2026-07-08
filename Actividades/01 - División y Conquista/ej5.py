@@ -1,35 +1,38 @@
-'''
+"""
 Implementar Merge Sort. Justificar la complejidad del algoritmo mediante el teorema maestro.
-'''
+"""
+
 
 def merge(izq, der):
-	resultado = []
-	i = j = 0
+    resultado = []
+    i = j = 0
 
-	while i < len(izq) and j < len(der):
-		if izq[i] <= der[j]:
-			resultado.append(izq[i])
-			i += 1
-		else:
-			resultado.append(der[j])
-			j += 1
+    while i < len(izq) and j < len(der):
+        if izq[i] <= der[j]:
+            resultado.append(izq[i])
+            i += 1
+        else:
+            resultado.append(der[j])
+            j += 1
 
-	resultado.extend(izq[i:])
-	resultado.extend(der[j:])
+    resultado.extend(izq[i:])
+    resultado.extend(der[j:])
 
-	return resultado
+    return resultado
+
 
 def merge_sort(arr):
-	if len(arr) <= 1:
-		return arr
-	
-	medio = len(arr) // 2
-	parte_izq = merge_sort(arr[:medio])
-	parte_der = merge_sort(arr[medio:])
+    if len(arr) <= 1:
+        return arr
 
-	return merge(parte_izq, parte_der)
+    medio = len(arr) // 2
+    parte_izq = merge_sort(arr[:medio])
+    parte_der = merge_sort(arr[medio:])
 
-'''
+    return merge(parte_izq, parte_der)
+
+
+"""
 Teniendo en cuenta el teorema maestro:
 	T(n)=AT(n/B)+O(f(n))
 Entonces:
@@ -37,4 +40,4 @@ Entonces:
 	O(n) == n^(log_2(2))
 Por lo que la complejidad resulta en:
 	O(n*log(n))
-'''
+"""

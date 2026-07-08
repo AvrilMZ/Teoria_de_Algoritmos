@@ -1,25 +1,28 @@
-'''
+"""
 Implementar un algoritmo que, por división y conquista, permita obtener la parte entera de la raíz cuadrada de un número n, en tiempo O(log(n)). Por ejemplo, para n = 10 debe devolver 3, y para n = 25 debe devolver 5. Justificar el orden del algoritmo.
 
 Aclaración: no se requiere el uso de ninguna librería de matemática que calcule la raíz cuadrada, ni de forma exacta ni aproximada.
-'''
+"""
+
 
 def raiz_entera(n, min, max):
-	if min > max:
-		return max
-	
-	medio = (min + max) // 2
-	if medio * medio == n:
-		return medio
-	elif medio * medio < n:
-		return raiz_entera(n, medio + 1, max)
-	else:
-		return raiz_entera(n, min, medio - 1)
+    if min > max:
+        return max
+
+    medio = (min + max) // 2
+    if medio * medio == n:
+        return medio
+    elif medio * medio < n:
+        return raiz_entera(n, medio + 1, max)
+    else:
+        return raiz_entera(n, min, medio - 1)
+
 
 def parte_entera_raiz(n):
-	return raiz_entera(n, 1, n)
+    return raiz_entera(n, 1, n)
 
-'''
+
+"""
 Teniendo en cuenta el teorema maestro:
 	T(n)=AT(n/B)+O(f(n))
 Entonces:
@@ -27,4 +30,4 @@ Entonces:
 	O(1) == n^(log_2(1))
 Por lo tanto el orden final es:
 	O(log(n))
-'''
+"""

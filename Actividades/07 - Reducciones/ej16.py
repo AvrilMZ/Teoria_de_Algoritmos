@@ -37,7 +37,7 @@ Demostración:
 -> Si existe Vertex Cover existe Hitting-Set:
 	Dado un grafo con V vertices y E aristas tenemos un subconjunto C' con k' elementos tal que todas las aristas queden cubiertas. Suponiendo que cada vertice es un valor y cada arista es una union entre elementos de un subconjunto, obtendriamos k' elementos que se relacionan con todos los valores restantes de C' consiguiendo un Hitting-Set.
 
--> Si existe Hitting-Set existe Vertex Cover:
+<- Si existe Hitting-Set existe Vertex Cover:
 	Dado un subconjunto C con k elementos y un espacio muestral A. Suponiendo que cada valor de A es un vertice y las conecciones con aristas son generadas mediante los valores de los subconjuntos de M, vemos que solo con los vertices pertenecientes a C podemos conectar con al menos un elemento de cada subconjunto, consiguiendo indirectamente el Vertex Cover (ya que cada arista tendria al menos uno de sus vertices en el set).
 
 Por lo tanto el Hitting-Set Problem es un problema NP-Completo.

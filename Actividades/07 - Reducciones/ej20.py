@@ -5,7 +5,7 @@ Ayuda: este problema tiene mucha semejanza con Independent Set.
 
 '''
 Path Selection: ¿Existen al menos k caminos tales que ningun par de caminos seleccionados comparta ningun nodo en un grafo dirigido?
-Independent Set: ¿?
+Independent Set: ¿Existen al menos k' vertices tales que ninguno sea adyacente con el otro?
 
 Para que el problema Path Selection sea NP-Completo debe estar primero en NP:
 '''
@@ -32,13 +32,15 @@ def verificador_ps(pedidos, k, seleccion):
 # Por lo que el problema Path Selection pertenece a NP.
 
 '''
-
+Dado un grafo G=(V, E), donde cada vertice representa un pedido P_i, y k = k', buscamos realizar la reduccion:
 	Independent Set <=_p Path Selection
 
 Demostración:
 -> Si existe Independent Set entonces existe Path Selection:
+	Al aplicar el algoritmo de independent set sobre el grafo G planteado obtendriamos los caminos buscados del problema de path selection.
 
+<- Si existe Path Selection entonces existe Independent Set:
+	Dado que los caminos no deben compartir ningun nodo, un nodo A perteneciente a la solucion S no tendra niguno de sus adyacentes dento de S, por lo que tendriamos un independent set.
 
--> Si existe Path Selection entonces existe Independent Set:
-
+Por lo tanto el problema Path Selection es un problema NP-Completo.
 '''

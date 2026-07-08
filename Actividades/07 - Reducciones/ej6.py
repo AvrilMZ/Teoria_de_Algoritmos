@@ -30,7 +30,7 @@ Demostración:
 -> Si hay N-Reinas hay Independent Set:
 	Dadas las n reinas colocadas, por la naturaleza del problema conocemos que esas posiciones no pueden relacionarse con ninguna de las otras n (esto implica que no se encuentren ni en sus diagonales o rectas), notemos como ese subconjunto de n posiciones es un Independent Set.
 
--> Si hay Independent Set hay N-Reinas:
+<- Si hay Independent Set hay N-Reinas:
 	Dados los V vertices de un grafo y los n' vertices pertenencientes al Independent Set sabemos que ninguno de ellos va a tener una arista con otro vertice tambien perteneciente al subconjunto solucion. Podemos definir un vertice V_i y sus adyacentes como una instancia de un tablero, sabiendo que sus adyacentes van a ser las celdas vecinas (o las que esten habilitadas para un movimiento), es asi como notamos que obtendriamos las n posiciones de reinas, resultando en que n' = n.
 
 Concluimos que Independent Set es un problema NP-Completo.

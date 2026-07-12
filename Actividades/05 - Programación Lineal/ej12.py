@@ -8,14 +8,14 @@ Implementar un modelo de programación lineal que dados los valores de los Ti no
 T_i: Constante numero i del conjunto
 X_i: Variable binaria, la constante en la posicion i pertenece a S1.
 
-min{max{\sum{T_i*X_i}, \sum{T_i*(1 - X_i)}}}
+min{Z}
 
 (Poniendo 1 - X_i me ahorro la variable Y_i, por lo tanto tengo n resricciones menos (ya que no necesito X_i + Y_i = 1))
 
 Restricciones:
-Definimos Z = max{\sum{T_i*X_i}, \sum{T_i*(1 - X_i)}}, osea max(S1,S2).
 - Z >= \sum{T_i*X_i}
 - Z >= \sum{T_i*(1 - X_i)}
+(Ambas restricciones modelan el max original del problema)
 
 Cantidad total de inecuaciones: 2n
 """
